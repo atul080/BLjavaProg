@@ -4,7 +4,7 @@ import java.util.*;
 
 public class EmployeeWageBuilder {
     public static void main(String[] ar)
-    {
+    {   
         System.out.println("Welcome to employee wage builder.");
         int IS_FULL_TIME=1;
         int EMP_RATE_PER_HOUR=20;
