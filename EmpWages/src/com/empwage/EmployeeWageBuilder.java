@@ -1,38 +1,39 @@
 package com.empwage;
-
-import java.util.*;
+import java.util.Random;
 
 public class EmployeeWageBuilder {
-    public static int IS_FULL_TIME=1;
-    public static int IS_PART_TIME=2;
-    public static int EMP_RATE_PER_HOUR=20;
+    public static final int IS_FULL_TIME=1;
+    public static final int EMP_RATE_PER_HOUR=20;
+    public static final int IS_PART_TIME=2;
     public static final int NO_OF_WORKING_DAYS=20;
-    public static void main(String[] ar) {
-        System.out.println("Welcome to employee wage builder.");
-        int empHours = 0;
-        int empWage = 0;
-        int totalWorkingDays=0;
+    public static final int TOTAL_WORKING_HOURS=100;
+    public static void main(String args[]) {
+        System.out.println("Welcome to Employee Wage Builder");
+        int empHours=0;
+        int empWage=0;
         int totalEmployeeWage=0;
-        while(totalWorkingDays<NO_OF_WORKING_DAYS) {
+        int totalEmpHours=0;
+        int totalWorkingDays=0;
+        int count=0;
+        while(totalEmpHours<TOTAL_WORKING_HOURS && totalWorkingDays<NO_OF_WORKING_DAYS){
             totalWorkingDays++;
-            Random ran = new Random();
-            int empCheck = ran.nextInt(3);
-            switch (empCheck) {
-                case 1:
-                    empHours = 8;
+            Random random=new Random();
+            int empCheck= random.nextInt( 3);
+            switch(empCheck){
+                case IS_FULL_TIME:
+                    empHours=8;
                     break;
-                case 2:
-                    empHours = 4;
+                case IS_PART_TIME:
+                    empHours=4;
                     break;
                 default:
-                    empHours = 0;
+                    empHours=0;
                     break;
             }
-            empWage = empHours * EMP_RATE_PER_HOUR;
-            System.out.println("The daily wage of employee is: " + empWage);
+            totalEmpHours=totalEmpHours+empHours;
+            empWage=empHours*EMP_RATE_PER_HOUR;
             totalEmployeeWage=totalEmployeeWage+empWage;
         }
-        System.out.println("The total employee wage of an employee for" +totalWorkingDays+" days is: "+ totalEmployeeWage);
-
+        System.out.println("The total employee wage of an employee for "+totalEmpHours+" hours or "+totalWorkingDays+" days is: "+ totalEmployeeWage);
     }
-    }
+}
