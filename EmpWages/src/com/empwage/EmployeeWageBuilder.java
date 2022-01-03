@@ -7,6 +7,7 @@ package com.empwage;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 //classEmployeeWagesBuilder is implementing INTERFACE IEmployeeWage
 public class EmployeeWageBuilder implements IEmployeeWage
@@ -45,6 +46,24 @@ public class EmployeeWageBuilder implements IEmployeeWage
 				companyInfoArray.get(i).setTotalEmpWage(this.computeWage(companyInfoArray.get(i))); // inside bracket return totalEmpWage
 				System.out.println(companyInfoArray.get(i));
 			}
+		}
+		/*
+		 * getEmpTotalWageCompanyWise method to get total wage company wise
+		 * @return totalwage
+		 * */
+		public int getEmpTotalWageCompanyWise()
+		{
+			int opt=0;
+			String compName="";
+			System.out.println("Select from below option to get total wages by company name : ");
+			for (int i = 0; i < numOfCompany; i++) 
+			{
+				opt=i+1;
+				System.out.println(opt+". "+companyInfoArray.get(i).getCompanyName());
+			}
+			Scanner sc=new Scanner(System.in);
+			int option=sc.nextInt();
+			return companyInfoArray.get(--option).getTotalEmpWage();
 		}
 		/*
 		*	We have used static method here so that we can directly call it inside main
@@ -88,6 +107,8 @@ public class EmployeeWageBuilder implements IEmployeeWage
 			totalWage = totalEmpHrs * companyInfo.getEmpRatePerHour();
 			return totalWage;
 		}
+		
+	
 		/* main method
 		 * Making Object of EmployeeWageBuilder class and passing Company info as parameters in addCompanyInfo method
 		 * Adding companies informations.
@@ -95,12 +116,17 @@ public class EmployeeWageBuilder implements IEmployeeWage
 		public static void main(String[] args) 
 		{
 			System.out.println("Welcome To Employee Wage Computation Program");
-			IEmployeeWage employeeWageBuilder = new EmployeeWageBuilder();
+			EmployeeWageBuilder employeeWageBuilder = new EmployeeWageBuilder();
 			((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Infosys", 150, 2, 10);
 			((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("TCS" , 200, 3, 10);
 			((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Accenture", 100, 4, 12);
 			((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Jio", 180, 3, 15);
 			((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Airtel", 160, 4, 14);
 			((EmployeeWageBuilder) employeeWageBuilder).computeEmpWage();
+			
+			//EmployeeWageBuilder empWageBuilder =new EmployeeWageBuilder();
+			System.out.println("Total wage is: "+employeeWageBuilder.getEmpTotalWageCompanyWise());
+			
+			
 		}
 	}

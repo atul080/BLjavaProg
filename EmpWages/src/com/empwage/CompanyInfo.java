@@ -28,6 +28,11 @@ class CompanyInfo
 		this.totalEmpWage = totalEmpWage;
 	}
 	
+	public int getTotalEmpWage() 
+	{
+		return totalEmpWage;
+	}
+	
 	public void setDailyWage(String dailyWage) 
 	{
 		this.dailyWage = dailyWage;
