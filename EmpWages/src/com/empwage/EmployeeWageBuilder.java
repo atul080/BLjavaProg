@@ -1,20 +1,19 @@
 /*
  * @author Atul Srivastav
  * @date 03/01/2022
- * Employee wages calculation for companies using array.
+ * Employee wages calculation with ArrayList to save the details.
  * */
 package com.empwage;
-
 import java.util.Random;
 
-public class EmployeWageBuilder{
+public class EmployeeWageBuilder implements IEmployeeWage{
     // Declaring a constant
     public static final int IS_FULLTIME = 1;
     public static final int IS_PARTTIME = 2;
     private int numOfCompany = 0;
     private CompanyInfo[] companyInfoArray;
 
-    public EmployeWageBuilder() {
+    public EmployeeWageBuilder() {
         companyInfoArray = new CompanyInfo[6];
     }
 
@@ -35,6 +34,7 @@ public class EmployeWageBuilder{
     public static int computeWage(CompanyInfo companyInfo) {
 // Declaring the variables
         int empHrs = 0;
+        int empWage = 0;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
         int totalWage = 0;
@@ -55,6 +55,7 @@ public class EmployeWageBuilder{
                 default: // Employee is absent
                     empHrs = 0;
             }
+            empWage = companyInfo.getEmpRatePerHour() * empHrs;
             totalEmpHrs += empHrs;
         }
         totalWage = totalEmpHrs * companyInfo.getEmpRatePerHour();
@@ -63,12 +64,12 @@ public class EmployeWageBuilder{
 
     public static void main(String[] args) {
         System.out.println("Welcome To Employee Wage Computation Program");
-        EmployeWageBuilder employeeWageBuilder = new EmployeWageBuilder();
-        employeeWageBuilder.addCompanyInfo("Microsoft", 4, 30, 100);
-        employeeWageBuilder.addCompanyInfo("TCS" , 200, 3, 10);
-        employeeWageBuilder.addCompanyInfo("Accenture", 100, 4, 12);
-        employeeWageBuilder.addCompanyInfo("Jio", 180, 3, 15);
-        employeeWageBuilder.addCompanyInfo("Airtel", 160, 4, 14);
-        employeeWageBuilder.computeEmpWage();
+        IEmployeeWage employeeWageBuilder = new EmployeeWageBuilder();
+        ((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Infosys", 150, 2, 10);
+        ((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("TCS" , 200, 3, 10);
+        ((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Accenture", 100, 4, 12);
+        ((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Jio", 180, 3, 15);
+        ((EmployeeWageBuilder) employeeWageBuilder).addCompanyInfo("Airtel", 160, 4, 14);
+        ((EmployeeWageBuilder) employeeWageBuilder).computeEmpWage();
     }
 }
