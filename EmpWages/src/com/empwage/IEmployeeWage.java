@@ -6,8 +6,9 @@
  * */
 package com.empwage;
 //making Interface
-public interface IEmployeeWage {
-    public void addCompanyInfo(String companyName, int empRatePerHour, int noOfWorkingDays, int maxHoursPerMonth);
-
-    public void computeEmpWage();
+interface IEmployeeWage 
+{
+	public void addCompanyInfo(String companyName, int empRatePerHour, int noOfWorkingDays, int maxHoursPerMonth);
+	public void computeEmpWage();
 }
+
