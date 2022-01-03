@@ -1,6 +1,6 @@
 package com.empwage;
 //class CompanyInfo for getting all company details.
-public class CompanyInfo 
+class CompanyInfo 
 {
 	//variable declarations
 	private String companyName;
@@ -8,6 +8,7 @@ public class CompanyInfo
 	private int noOfWorkingDays;
 	private int maxHoursPerMonth;
 	private int totalEmpWage;
+	private String dailyWage;
 	
 	/*
 	 * Constructor of CompanyInfo calss.
@@ -25,6 +26,11 @@ public class CompanyInfo
 	public void setTotalEmpWage(int totalEmpWage) 
 	{
 		this.totalEmpWage = totalEmpWage;
+	}
+	
+	public void setDailyWage(String dailyWage) 
+	{
+		this.dailyWage = dailyWage;
 	}
 	
 	public String getCompanyName() 
@@ -74,7 +80,7 @@ public class CompanyInfo
 		", empRatePerHour = " + empRatePerHour +
 		", numOfWorkingDays = " + noOfWorkingDays +
 		", maxHrsPerMonth = " + maxHoursPerMonth +
-		", totalWage = " + totalEmpWage;
+		", totalWage = " + totalEmpWage+", dailyWage= "+dailyWage;
 		
 	}
 }

@@ -59,6 +59,7 @@ public class EmployeeWageBuilder implements IEmployeeWage
 			int totalEmpHrs = 0;
 			int totalWorkingDays = 0;
 			int totalWage = 0;
+			String dailyWage="";
 			/*
 			* Using random method to generate random numbers 0, 1 and 2
 			* Calculating wages.
@@ -80,6 +81,8 @@ public class EmployeeWageBuilder implements IEmployeeWage
 										empHrs = 0;
 				}
 				empWage = companyInfo.getEmpRatePerHour() * empHrs;
+				dailyWage=dailyWage+empWage+", ";
+				companyInfo.setDailyWage(dailyWage);
 				totalEmpHrs += empHrs;
 			}
 			totalWage = totalEmpHrs * companyInfo.getEmpRatePerHour();
